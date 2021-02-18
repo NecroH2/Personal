@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tareas</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <div class ="logo">
+        <a href ="#"><img src =""></a>
+    </div>
+    <nav>
+        <ul>
+            <li><a id="salir" href="{% url 'logout' %}">Logout {{user}}</a></li>
+         </ul>
+    </nav>
+    <section>
+        <div id="titulo"><h2>Crea tu cuenta</h2></div>
+            <div class="tasignadas">
+                <form method="post" action="." enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <p>
+                    <label for="id_username">Nombre usuario (este es el nombre que los otros verán)</label>
+                    {{ form.username }}
+                    </p>
+                    <p>
+                        <label for="id_first_name">Imagen de perfil</label>
+                    {{ form.foto }}
+                    </p>
+                    <p>
+                        <label for="id_last_name">Estado</label>
+                    {{ form.estado }}
+                    </p>
+                    <button class="submit" type="submit" name="submit">Guardar</button>
+                    <input type="hidden" name="next" value="{{ next }}" />
+                </form>
+            </div>
+    </section>
+</body>
+<footer>
+    <div class="footer-social-icons">
+        <ul>
+        </ul>
+    </div>
+    <div class="footer-main-div">
+        <div class="footer-menu-one">
+            <ul>
+                <li><a href="#">sobre nosotros</a></li>
+                <li><a href="#">servicios</a></li>
+                <li><a href="#">empresas</a></li>
+                <li><a href="#">contacto</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-menu-two">
+            <ul>
+                <li><a href="#">blogs</a></li>
+                <li><a href="#">actualizaciones</a></li>
+                <li><a href="#">clientes</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>Diseñador por: joalni.company/duoc</p>
+    </div>
+</footer>
+</html>

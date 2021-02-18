@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tareas</title>
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <nav>
+        <ul>
+           <li><a id="inicio" href = "#">Inicio</a></li>
+           <li><a id="tarea" href = "#">Tareas</a></li>
+           <li><a id="problemas" href = "#">Problemas</a></li>
+           <li><a id="contacto" href = "#">Contacto</a></li>
+           <li><a id="salir" href="{% url 'logout' %}">Logout {{user}}</a></li>
+        </ul>
+    </nav>
+    <div class="chat_container">
+        <div>
+            <h1>Tus chats</h1>
+        </div>
+        <div class="chat">
+            
+        </div>
+    </div>
+</body>
+<footer>
+    
+</footer>
+</html>

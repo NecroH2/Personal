@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tareas</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <div class ="logo">
+        <a href ="#"><img src =""></a>
+    </div>
+    <nav>
+        <ul>
+            <li><a id="salir" href="{% url 'logout' %}">Logout {{user}}</a></li>
+         </ul>
+    </nav>
+    <section>
+        <div id="titulo"><h2>Registrar usuario</h2></div>
+            <div class="tasignadas">
+                <form method="post" action="." >
+                    {% csrf_token %}
+                    <p>
+                    <label for="id_username">Nombre usuario (este es el nombre con el que te loguearás)</label>
+                    {{ form.username }}
+                    </p>
+                    <p>
+                        <label for="id_first_name">Nombre</label>
+                    {{ form.first_name }}
+                    </p>
+                    <p>
+                        <label for="id_last_name">Segundo nombre</label>
+                    {{ form.last_name }}
+                    </p>
+                    <p>
+                        <label for="id_email">Correo electronico</label>
+                    {{ form.email }}
+                    </p>
+                    <p>
+                        <label for="id_password1">Contraseña</label>
+                    {{ form.password1 }}
+                    </p>
+                    <p>
+                        <label for="id_password2">Confirmar contraseña</label>
+                    {{ form.password2 }}
+                    </p>
+                    {% if form.errors %}
+                    <div class="alert alert-error">
+                        <h4>Please fix the following errors</h4>
+                        <ul>
+                        {% for field in form %}
+                        {% if field.errors %}
+                        {% for error in field.errors %}
+                        <li><a href="" class="error">{{ error|escape }}</a></li>
+                        {% endfor %}
+                        {% endif %}
+                        {% endfor %}
+                        </ul>
+                        {% if form.non_field_errors %}
+                        {{ form.non_field_errors }}
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                    <button class="submit" type="submit" name="submit">Guardar</button>
+                    <input type="hidden" name="next" value="{{ next }}" />
+                    </form>
+            </div>
+    </section>
+</body>
+<footer>
+    <div class="footer-social-icons">
+        <ul>
+        </ul>
+    </div>
+    <div class="footer-main-div">
+        <div class="footer-menu-one">
+            <ul>
+                <li><a href="#">sobre nosotros</a></li>
+                <li><a href="#">servicios</a></li>
+                <li><a href="#">empresas</a></li>
+                <li><a href="#">contacto</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-menu-two">
+            <ul>
+                <li><a href="#">blogs</a></li>
+                <li><a href="#">actualizaciones</a></li>
+                <li><a href="#">clientes</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>Diseñador por: joalni.company/duoc</p>
+    </div>
+</footer>
+</html>
