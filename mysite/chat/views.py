@@ -30,7 +30,6 @@ def registro(request):
         if form.is_valid():
             form.save()
             user = form.cleaned_data.get('username')
-            messages.success(request, 'Cuenta fue creada')
             return redirect('login')
 
 
@@ -44,21 +43,26 @@ def confirmacion(request):
 
 def nuevacuenta(request):
 
-    data = {
-        'form' : CreateCuenta()  
-    }
+    usuario = CuentaU.objects.filter(iduser=request.user).count()
+    if usuario == 0:
 
-    if request.method == 'POST':
-        form = CreateCuenta(data=request.POST, files=request.FILES)
-        if form.is_valid():
-            tsk = form.save(commit=False)
-            tsk.iduser = request.user
-            form.save()
-            return redirect(to='login')
-        else:
-            data["form"] = form
 
-    return render(request, 'chat/creacion.html', data)
+        data = {
+            'form' : CreateCuenta()  
+        }
+
+        if request.method == 'POST':
+            form = CreateCuenta(data=request.POST, files=request.FILES)
+            if form.is_valid():
+                tsk = form.save(commit=False)
+                tsk.iduser = request.user
+                form.save()
+                return redirect(to='/')
+            else:
+                data["form"] = form
+        return render(request, 'chat/creacion.html', data)
+    else: 
+        return redirect('/')
 
 
 #def crearflujo(request):
